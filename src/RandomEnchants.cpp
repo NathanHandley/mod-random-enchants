@@ -67,9 +67,9 @@ public:
         float enchantChance2 = sConfigMgr->GetOption<float>("RandomEnchants.EnchantChance2", 65.0f);
         float enchantChance3 = sConfigMgr->GetOption<float>("RandomEnchants.EnchantChance3", 60.0f);
 
-        if (rand_chance() < enchantChance1)
+        if (Quality >= ITEM_QUALITY_RARE || rand_chance() < enchantChance1)
             slotRand[2] = getRandEnchantment(item);
-        if (slotRand[2] != -1 && rand_chance() < enchantChance2)
+        if (Quality >= ITEM_QUALITY_EPIC || (slotRand[2] != -1 && rand_chance() < enchantChance2))
             slotRand[1] = getRandEnchantment(item);
         if (slotRand[0] != -1 && rand_chance() < enchantChance3)
             slotRand[0] = getRandEnchantment(item);
