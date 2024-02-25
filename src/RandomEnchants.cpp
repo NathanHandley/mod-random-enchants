@@ -71,7 +71,7 @@ public:
             slotRand[2] = getRandEnchantment(item);
         if (Quality >= ITEM_QUALITY_EPIC || (slotRand[2] != -1 && rand_chance() < enchantChance2))
             slotRand[1] = getRandEnchantment(item);
-        if (Quality >= ITEM_QUALITY_LEGENDARY || (slotRand[0] != -1 && rand_chance() < enchantChance3))
+        if (Quality >= ITEM_QUALITY_LEGENDARY || (slotRand[1] != -1 && rand_chance() < enchantChance3))
             slotRand[0] = getRandEnchantment(item);
 
         for (int i = 0; i < 3; i++) {
