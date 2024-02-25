@@ -68,11 +68,11 @@ public:
         float enchantChance3 = sConfigMgr->GetOption<float>("RandomEnchants.EnchantChance3", 60.0f);
 
         if (rand_chance() < enchantChance1)
-            slotRand[0] = getRandEnchantment(item);
-        if (slotRand[0] != -1 && rand_chance() < enchantChance2)
-            slotRand[1] = getRandEnchantment(item);
-        if (slotRand[1] != -1 && rand_chance() < enchantChance3)
             slotRand[2] = getRandEnchantment(item);
+        if (slotRand[2] != -1 && rand_chance() < enchantChance2)
+            slotRand[1] = getRandEnchantment(item);
+        if (slotRand[0] != -1 && rand_chance() < enchantChance3)
+            slotRand[0] = getRandEnchantment(item);
 
         for (int i = 0; i < 3; i++) {
             if (slotRand[i] != -1) {
@@ -84,11 +84,11 @@ public:
             }
         }
         ChatHandler chathandle = ChatHandler(player->GetSession());
-        if (slotRand[2] != -1)
+        if (slotRand[0] != -1)
             chathandle.PSendSysMessage("Newly Acquired |cffFF0000 %s |rhas received|cffFF0000 3 |rrandom enchantments!", item->GetTemplate()->Name1.c_str());
         else if (slotRand[1] != -1)
             chathandle.PSendSysMessage("Newly Acquired |cffFF0000 %s |rhas received|cffFF0000 2 |rrandom enchantments!", item->GetTemplate()->Name1.c_str());
-        else if (slotRand[0] != -1)
+        else if (slotRand[2] != -1)
             chathandle.PSendSysMessage("Newly Acquired |cffFF0000 %s |rhas received|cffFF0000 1 |rrandom enchantment!", item->GetTemplate()->Name1.c_str());
     }
 
