@@ -120,7 +120,29 @@ public:
         tierRollFloor += tierItemLevelFloorAdd;
 
         // Roll for a rarity
-        int tierRarityRoll = urand(0, 150) + tierRollFloor;
+        int tierRollRangeAdd = urand(50, 155);
+        int tierRollCap = tierRollFloor + tierRollRangeAdd;
+        if (tierRollCap > 250)
+            tierRollCap = 250;
+        int tierRarityRoll = urand(tierRollFloor, tierRollCap);
+
+        // Give a 1-in-20 chance of a tier bump
+        if (urand(1, 20) == 20)
+        {
+            tierRarityRoll += 50;
+
+            // Give a 1-in-10 chance of another tier bump
+            if (urand(1, 10) == 10)
+            {
+                tierRarityRoll += 50;
+
+                // Give one final tier bump chance of 1-in-5
+                if (urand(1, 5) == 5)
+                {
+                    tierRarityRoll += 50;
+                }
+            }
+        }   
 
         // Determine the tier based on the result
         int tier = 1;
