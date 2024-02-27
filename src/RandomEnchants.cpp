@@ -120,10 +120,7 @@ public:
         tierRollFloor += tierItemLevelFloorAdd;
 
         // Roll for a rarity
-        int tierRollRangeAdd = urand(50, 155);
-        int tierRollCap = tierRollFloor + tierRollRangeAdd;
-        if (tierRollCap > 250)
-            tierRollCap = 250;
+        int tierRollCap = tierRollFloor + 155;
         int tierRarityRoll = urand(tierRollFloor, tierRollCap);
 
         // Give a 1-in-20 chance of a tier bump
@@ -177,7 +174,7 @@ public:
             return -1;
         int tier = CalcTierForItem(item);
 
-        QueryResult qr = WorldDatabase.Query("SELECT enchantID FROM item_enchantment_random_tiers WHERE tier='{}' AND exclusiveSubClass=NULL AND class='{}' OR exclusiveSubClass='{}' OR class='ANY' ORDER BY RAND() LIMIT 1", tier, ClassQueryString, item->GetTemplate()->SubClass);
+        QueryResult qr = WorldDatabase.Query("SELECT enchantID FROM item_enchantment_random_tiers WHERE tier='{}' AND ((exclusiveSubClass=NULL AND class='{}') OR exclusiveSubClass='{}' OR class='ANY') ORDER BY RAND() LIMIT 1", tier, ClassQueryString, item->GetTemplate()->SubClass);
         return qr->Fetch()[0].Get<uint32>();
     }
 };
