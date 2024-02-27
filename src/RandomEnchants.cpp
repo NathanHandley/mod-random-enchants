@@ -123,13 +123,13 @@ public:
         int tierRollCap = tierRollFloor + 155;
         int tierRarityRoll = urand(tierRollFloor, tierRollCap);
 
-        // Give a 1-in-20 chance of a tier bump
-        if (urand(1, 20) == 20)
+        // Give a 1-in-10 chance of a tier bump
+        if (urand(1, 10) == 10)
         {
             tierRarityRoll += 50;
 
-            // Give a 1-in-10 chance of another tier bump
-            if (urand(1, 10) == 10)
+            // Give a 1-in-5 chance of another tier bump
+            if (urand(1, 5) == 5)
             {
                 tierRarityRoll += 50;
 
