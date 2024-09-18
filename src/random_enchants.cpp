@@ -26,11 +26,11 @@ void rollPossibleEnchant(Player* player, Item* item)
     float enchantChance2 = sConfigMgr->GetOption<float>("RandomEnchants.EnchantChance2", 65.0f);
     float enchantChance3 = sConfigMgr->GetOption<float>("RandomEnchants.EnchantChance3", 60.0f);
 
-    if (Quality >= ITEM_QUALITY_RARE || rand_chance() < enchantChance1)
+    if (itemQuality >= ITEM_QUALITY_RARE || rand_chance() < enchantChance1)
         slotRand[2] = getRandEnchantment(item);
-    if (Quality >= ITEM_QUALITY_EPIC || (slotRand[2] != -1 && rand_chance() < enchantChance2))
+    if (itemQuality >= ITEM_QUALITY_EPIC || (slotRand[2] != -1 && rand_chance() < enchantChance2))
         slotRand[1] = getRandEnchantment(item);
-    if (Quality >= ITEM_QUALITY_LEGENDARY || (slotRand[1] != -1 && rand_chance() < enchantChance3))
+    if (itemQuality >= ITEM_QUALITY_LEGENDARY || (slotRand[1] != -1 && rand_chance() < enchantChance3))
         slotRand[0] = getRandEnchantment(item);
 
     for (int i = 0; i < 3; i++)
