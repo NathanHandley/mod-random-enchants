@@ -17,7 +17,7 @@ RandomEnchants.Enable = 1
 #        Announce a message on login for this module
 #        Default:     1
 
-RandomEnchants.AnnounceOnLogin=1
+RandomEnchants.AnnounceOnLogin=0
 
 #
 #     RandomEnchants.OnLoginMessage
