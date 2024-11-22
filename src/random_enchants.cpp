@@ -55,11 +55,11 @@ void rollPossibleEnchant(Player* player, Item* item)
         ObjectMgr::GetLocaleString(il->Name, loc_idx, name);
 
 
-    if (slotRand[2] != -1)
+    if (slotRand[0] != -1)
         chathandle.PSendSysMessage("Newly Acquired |cffFF0000 {} |rhas received|cffFF0000 3 |rrandom enchantments!", name);
     else if (slotRand[1] != -1)
         chathandle.PSendSysMessage("Newly Acquired |cffFF0000 {} |rhas received|cffFF0000 2 |rrandom enchantments!", name);
-    else if (slotRand[0] != -1)
+    else if (slotRand[2] != -1)
         chathandle.PSendSysMessage("Newly Acquired |cffFF0000 {} |rhas received|cffFF0000 1 |rrandom enchantment!", name);
 }
 
